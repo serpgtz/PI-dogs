@@ -1,0 +1,17 @@
+
+
+.body{
+
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+}
+
+.total{
+    background-image: url(https://static9.depositphotos.com/1594920/1090/i/950/depositphotos_10903571-stock-photo-collage-of-36-dog-heads.jpg);
+    padding:50%;
+  
+}
+.h1{
+    color: white;
+}
