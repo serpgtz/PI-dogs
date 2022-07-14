@@ -21,9 +21,13 @@ const getApiInfo= async ()=>{
             image:el.image.url,
             temperament: el.temperament
         }
+        
     })
+    
     return apiInfo
 }
+
+
 
 
 const getBsInfo = async ()=>{
@@ -98,14 +102,15 @@ router.get("/:id", async(req,res)=>{
 
 router.post("/" ,async(req,res)=>{
   try {
-    const {name, height, weight, life_span,temperamento } = req.body
-   //temperamento=["Docile"," Faithful"]
+    const {name, height, weight, life_span, image, temperamento } = req.body
+//    temperamento=["Docile"," Faithful"]
 
     const raza= await Dog.create({
         name,
         height,
         weight,
-        life_span
+        life_span,
+        image,
     })
 
     temperamento.forEach(async element => {
@@ -116,7 +121,7 @@ router.post("/" ,async(req,res)=>{
         raza.addTemperamento(tempBd)
         
     });
-    return res.json(raza)
+    return res.send(raza)
   } catch (error) {
     console.log(error)
   }
