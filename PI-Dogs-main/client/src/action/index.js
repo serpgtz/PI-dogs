@@ -6,7 +6,7 @@ export const APY_OR_BD = "APY_OR_BD"
 export const GET_BY_NAME = "GET_BY_NAME"
 export const GET_TEMPERAMENTOS = "GET_TEMPERAMENTOS"
 export const POST_DOGS = "POST_DOGS"
-
+export const GET_DETAIL = "GET_DETAIL"
 export function getDogs(){
     return async function(dispatch){
      try {
@@ -39,6 +39,18 @@ export function getDogsByName(name){
             dispatch({
                 type: GET_TEMPERAMENTOS,
                 payload: temperamentos.data
+            })
+        }
+    }
+
+    export function getDogById(id){
+        return function(dispatch){
+            axios.get(`http://localhost:3001/api/dogs/${id}`)
+            .then(response=>{
+                dispatch({
+                    type:GET_DETAIL,
+                    payload:response.data
+                })
             })
         }
     }

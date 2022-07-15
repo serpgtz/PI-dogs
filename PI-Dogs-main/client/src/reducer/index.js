@@ -1,10 +1,11 @@
 
-import {GET_DOGS, ORDEN_DOGS, APY_OR_BD, GET_BY_NAME,POST_DOGS, GET_TEMPERAMENTOS} from "../action/index"
+import {GET_DOGS, ORDEN_DOGS, APY_OR_BD, GET_BY_NAME,POST_DOGS, GET_TEMPERAMENTOS, GET_DETAIL} from "../action/index"
 
 const initialState = {
     dogs:[],
     allDogs:[],
-    temperamentos:[]
+    temperamentos:[],
+    dog:{}
 } 
 
 export default function reducer(state = initialState, action){
@@ -30,6 +31,11 @@ export default function reducer(state = initialState, action){
                 ...state,
                 temperamentos:action.payload
 
+            }
+        case GET_DETAIL:
+            return {
+                ...state,
+                dog:action.payload
             }
 
         case ORDEN_DOGS:

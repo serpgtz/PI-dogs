@@ -24,7 +24,10 @@ module.exports = (sequelize) => {
     },
     life_span:{
       type:DataTypes.TEXT,
-      allowNull:true
+      allowNull:true,
+    },
+    image:{
+      type:DataTypes.TEXT
     }
   });
 };

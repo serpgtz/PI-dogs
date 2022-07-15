@@ -93,7 +93,7 @@ export default function Home(){
                         console.log(alldogs)
                     return(
                         <fragment>
-                      <Link to={"/home/"+ d.id}>
+                      <Link to={"/dogDetail/"+ d.id}>
                         <Card name={d.name}
                         image={d.image}
                         temperament={d.temperament}

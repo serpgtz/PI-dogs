@@ -1,5 +1,5 @@
 const { Router} = require("express")
-const { Temperamento} = require("../db")
+const { Temperamento, Dog} = require("../db")
 const axios = require("axios")
 const router = Router();
 
@@ -21,7 +21,15 @@ router.get("/", async (req,res)=>{
         })
     });
 
-    const allTemperamentos = await Temperamento.findAll();
+    const allTemperamentos = await Temperamento.findAll({
+      include:{
+        model:Dog,
+        attributes: ["name", "image", "weight", "height", "life_span"],
+        through: {
+            attributes: []
+        }
+    }
+    });
     
     res.send(allTemperamentos)
   } catch (error) {

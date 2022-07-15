@@ -23,6 +23,7 @@ function Validate(input){
     else if(!input.temperamento.length===0){
         errors.temperamento = "Falta Agregar Temperamento"
     }
+    return  errors
 }
 
 export default function DogsCreate(){
@@ -52,6 +53,10 @@ export default function DogsCreate(){
             ...input,
             [e.target.name]: e.target.value
         })
+        setErrors(Validate({
+            ...input,
+            [e.target.name]:e.target.value
+        }))
         
     }
 
@@ -92,6 +97,12 @@ export default function DogsCreate(){
                      value={input.name}
                      name="name"
                      onChange={handleChange}/>
+                 {
+                        errors.name && (
+                            <p className= "error">{errors.name} </p>
+                        )
+                    }
+                    
                 </div>
                 <div>
                     <label>Altura:</label>
@@ -99,6 +110,13 @@ export default function DogsCreate(){
                     value={input.height}
                     name="height"
                     onChange={handleChange}/>
+
+                    {
+                        errors.height && (
+                            <p className= "error">{errors.height} </p>
+                        )
+                    }
+                    
                 </div>
                 <div>
                     <label>Peso:</label>
@@ -106,6 +124,13 @@ export default function DogsCreate(){
                     value={input.weight}
                     name="weight"
                     onChange={handleChange}/>
+
+                    {
+                        errors.weight && (
+                            <p className= "error">{errors.weight} </p>
+                        )
+                    }
+                    
                 </div>
                 <div>
                     <label>Esperanza de Vida:</label>
@@ -113,6 +138,13 @@ export default function DogsCreate(){
                     value={input.life_span}
                     name="life_span"
                     onChange={handleChange}/>
+
+                    {
+                        errors.life_span && (
+                            <p className= "error">{errors.life_span} </p>
+                        )
+                    }
+                    
                 </div>
                 <div>
                     <label>Imagen</label>
@@ -120,6 +152,13 @@ export default function DogsCreate(){
                     value={input.image}
                     name="image"
                     onChange={handleChange}/>
+
+                    {
+                        errors.image && (
+                            <p className= "error">{errors.image} </p>
+                        )
+                    }
+                    
                 </div>
                 <label>Temperamentos:</label>
                 <select onChange={(e)=>handleSelect(e)}>
