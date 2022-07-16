@@ -25,7 +25,7 @@ export default function Home(){
     const [valueCreate, setValueCreate] = useState("all")
 
     const temperamentos = useSelector(state=>state.temperamentos)
-    const dogs = useSelector(state=>state.dogs)
+    const dogs = useSelector(state=>state.allDogs)
 
     const paginado = (pageNumber) => {
         setPageCurrent(pageNumber)
@@ -66,11 +66,13 @@ export default function Home(){
     }
     function handleTemp(e){
         e.preventDefault()
+        setPageCurrent(1)
         dispatch(ordenByTemperament(e.target.value))
     }
 
     function handleRaza(e){
         e.preventDefault()
+        setPageCurrent(1)
         dispatch(ordenByRaza(e.target.value))
     }
 
@@ -114,7 +116,7 @@ export default function Home(){
                 </select>
                 <label>Razas: </label>
                 <select onChange={e=>{handleRaza(e)}}>
-                    <option value={"todos"}>Todos</option>
+                    <option value="todos">Todos</option>
                    {
                     dogs?.map(d=>{
                         return(
