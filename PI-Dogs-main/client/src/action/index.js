@@ -1,4 +1,5 @@
 import axios from "axios";
+
 export const ORDEN_DOGS = "ORDEN_DOGS"
 
 export const GET_DOGS = "GET_DOGS";
@@ -7,6 +8,11 @@ export const GET_BY_NAME = "GET_BY_NAME"
 export const GET_TEMPERAMENTOS = "GET_TEMPERAMENTOS"
 export const POST_DOGS = "POST_DOGS"
 export const GET_DETAIL = "GET_DETAIL"
+export const ORDEN_BY_TEM = "ORDEN_BY_TEM"
+export const ORDEN_BY_RAZA = "ORDEN_BY_RAZA"
+
+
+
 export function getDogs(){
     return async function(dispatch){
      try {
@@ -76,6 +82,25 @@ export function ordenDogs(payload){
     }
     
 
+}
+export function ordenByTemperament(temp){
+    console.log(temp)
+    return function(dispatch){
+        dispatch({
+            type: ORDEN_BY_TEM,
+            payload:temp
+        })
+       
+    }
+}
+export function ordenByRaza(raza){
+    console.log(raza)
+    return function(dispatch){
+        dispatch({
+            type:ORDEN_BY_RAZA,
+            payload:raza
+        })
+    }
 }
 
 export function apiOrbs(payload){

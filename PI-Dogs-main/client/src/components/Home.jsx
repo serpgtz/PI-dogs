@@ -2,7 +2,7 @@
 import { useEffect,useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
-import { getDogs, ordenDogs, apiOrbs } from "../action";
+import { getDogs, ordenDogs, apiOrbs,getTemperamentos, ordenByTemperament, ordenByRaza } from "../action";
 import Card from "./Card";
 import Paginado from "./Paginado";
 import SearchBar from "./SearchBar";
@@ -24,12 +24,17 @@ export default function Home(){
     const [orden, setOrden] = useState("")
     const [valueCreate, setValueCreate] = useState("all")
 
+    const temperamentos = useSelector(state=>state.temperamentos)
+    const dogs = useSelector(state=>state.dogs)
+
     const paginado = (pageNumber) => {
         setPageCurrent(pageNumber)
     }
 
 
-
+    useEffect(()=>{
+        dispatch(getTemperamentos())
+    },[])
 
     useEffect(()=>{
         dispatch(getDogs())
@@ -59,7 +64,15 @@ export default function Home(){
        
 
     }
-    
+    function handleTemp(e){
+        e.preventDefault()
+        dispatch(ordenByTemperament(e.target.value))
+    }
+
+    function handleRaza(e){
+        e.preventDefault()
+        dispatch(ordenByRaza(e.target.value))
+    }
 
 
 
@@ -72,16 +85,44 @@ export default function Home(){
             </button>
 
             <div>
+                <label>Orden alfabetico: </label>
                 <select onChange={e=>{handlerOrden(e)}}>
                     <option value="asc">A-Z</option>
                     <option value="des">Z-A</option>
                 </select>
             </div>
             <div>
+            <label>Creados o Api: </label>
                 <select onChange={e=>{handlerSelect(e)}}>
                     <option value={valueCreate}>{`${valueCreate}`}</option>
                     <option value="api">Existentes</option>
                     <option value="cre">Creados</option>
+                </select>
+
+                <label>Temperamentos: </label>
+                <select onChange={e=>{handleTemp(e)}}>
+                    <option value="todos">Todos</option>
+                   
+                    {   
+                        temperamentos?.map(t=>{
+                        return(
+                            <option value={t.name}>{t.name}</option>
+                        )
+                           
+                        })
+                    }
+                </select>
+                <label>Razas: </label>
+                <select onChange={e=>{handleRaza(e)}}>
+                    <option value={"todos"}>Todos</option>
+                   {
+                    dogs?.map(d=>{
+                        return(
+                            <option value={d.name}>{d.name}</option>
+                        )
+                    })
+
+                   }
                 </select>
                 <Paginado dogsPerPage={dogsPerPage}
                 alldogs={alldogs.length}

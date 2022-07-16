@@ -1,5 +1,5 @@
 
-import {GET_DOGS, ORDEN_DOGS, APY_OR_BD, GET_BY_NAME,POST_DOGS, GET_TEMPERAMENTOS, GET_DETAIL} from "../action/index"
+import {GET_DOGS, ORDEN_DOGS, APY_OR_BD, GET_BY_NAME,POST_DOGS, GET_TEMPERAMENTOS, GET_DETAIL,  ORDEN_BY_TEM,ORDEN_BY_RAZA} from "../action/index"
 
 const initialState = {
     dogs:[],
@@ -21,6 +21,28 @@ export default function reducer(state = initialState, action){
             return {
                 ...state,
                 dogs:action.payload
+            }
+        case  ORDEN_BY_TEM:
+            const dogs2= state.allDogs
+            
+            // const dogsFilter = dogs2.filter(t=>t.hasOwnProperty("temperament")?t.temperament.includes(action.payload):t.temperamentos.map(t=>t.temperamentos.name===action.payload))
+            
+            // const dogsFilter = dogs2.filter(t=>t.temperament?.includes(action.payload))
+           // const dogsFilter2 = dogs2.filter(t=>t.temperamentos?.map(t=>t.name.includes(action.payload)))
+             const dogsFilter =   dogs2.hasOwnProperty("temperamentos")?dogs2.filter(t=>t.temperamentos?.map(t=>t.name.includes(action.payload))):dogs2.filter(t=>t.temperament?.includes(action.payload))
+                
+            return {
+                ...state,
+                dogs:action.payload !=="todos"?dogsFilter:state.allDogs
+            }
+
+            
+        case ORDEN_BY_RAZA:
+            const dogs = state.allDogs
+            const dogsFilter2 = dogs.filter(d=>d.name.includes(action.payload))
+            return {
+                ...state,
+                dogs:action.payload !=="todos"?dogsFilter2:state.allDogs
             }
         case POST_DOGS:
             return{
