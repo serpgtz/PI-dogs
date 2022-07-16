@@ -9,8 +9,7 @@ import { getDogsByName } from "../action";
 
 
 
-
-export default function SearchBar(){
+export default function SearchBar({setPageCurrent}){
     const dispatch= useDispatch()
     const [name,setName] = useState("")
     
@@ -24,7 +23,10 @@ export default function SearchBar(){
     function handleSubmit(e){
         e.preventDefault()
         dispatch(getDogsByName(name))
+        setPageCurrent(1)
         setName("")
+    
+        
     }
 
 

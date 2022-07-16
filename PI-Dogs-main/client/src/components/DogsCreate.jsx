@@ -49,10 +49,12 @@ export default function DogsCreate(){
 
 
     function handleChange(e){
+       
         setInput({
             ...input,
             [e.target.name]: e.target.value
         })
+        
         setErrors(Validate({
             ...input,
             [e.target.name]:e.target.value
@@ -61,6 +63,10 @@ export default function DogsCreate(){
     }
 
     function handleSelect(e){
+        if(input.temperamento.includes(e.target.value)){
+            alert("Actividad ya Agregada")
+            return false;
+        }
         setInput({
             ...input,
             temperamento:[...input.temperamento,e.target.value]
@@ -70,6 +76,10 @@ export default function DogsCreate(){
     function handleSubmit(e){
         e.preventDefault()
         console.log(input)
+        if(!input.name||!input.height||!input.weight||!input.life_span||!input.image||!input.temperamento.length){
+            alert("No debe de Haber un campo en Blanco")
+            return false
+        }
         dispatch(postDogs(input))
         alert("Perro Creado con Exito")
         setInput({

@@ -10,6 +10,7 @@ import SearchBar from "./SearchBar";
 
 
 
+
 export default function Home(){
     const dispatch = useDispatch()
     const alldogs = useSelector(state=>state.dogs)
@@ -30,8 +31,7 @@ export default function Home(){
     const paginado = (pageNumber) => {
         setPageCurrent(pageNumber)
     }
-
-
+    
     useEffect(()=>{
         dispatch(getTemperamentos())
     },[])
@@ -76,6 +76,7 @@ export default function Home(){
         dispatch(ordenByRaza(e.target.value))
     }
 
+    
 
 
     return(
@@ -130,7 +131,7 @@ export default function Home(){
                 alldogs={alldogs.length}
                 paginado={paginado}/>
 
-                <SearchBar />
+                <SearchBar setPageCurrent={setPageCurrent}/>
                 {
                     currentDogs?.map(d=>{
                         console.log(alldogs)

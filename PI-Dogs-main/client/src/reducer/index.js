@@ -20,7 +20,7 @@ export default function reducer(state = initialState, action){
         case GET_BY_NAME:
             return {
                 ...state,
-                dogs:action.payload
+                dogs:action.payload === "no hay coincidencias"?state.allDogs:action.payload
             }
         case  ORDEN_BY_TEM:
             const dogs2= state.allDogs
