@@ -1,7 +1,8 @@
 import React, {useEffect} from "react";
 import {getDogById} from "../action"
 import { useDispatch, useSelector } from "react-redux";
-import { Link } from "react-router-dom";
+import { Link  } from "react-router-dom";
+import s from "./Detail.module.css"
 
 
 
@@ -26,8 +27,8 @@ const dog= useSelector(state=>state.dog)
             {
                 dog.length>0 ?
 
-                <div>
-                    <img src={dog[0].image} width="200px" weight="200px"/>
+                <div className={s.detail}>
+                    <img className={s.image} src={dog[0].image} width="350x" weight="250px"/>
                     {console.log(dog[0].image)}
                     <h1>Nombre: {dog[0].name}</h1>
                     <h4>Peso: {dog[0].weight}</h4>
@@ -39,9 +40,13 @@ const dog= useSelector(state=>state.dog)
 
                 </div>:<p>Loadig...</p>
             }
+            <div className={s.divbuttom}>
                 <Link to={"/home"}>
-                    <button>Home</button>
+                    <fragment className={s.homeb}>
+                    <button className={s.button}>Home</button>
+                    </fragment>
                 </Link>
+           </div>
 
         </div>
     )

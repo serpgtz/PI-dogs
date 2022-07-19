@@ -1,3 +1,57 @@
 .errors{
     color: red;
 }
+.home{
+    background: rgb(2,0,36);
+    background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(9,9,121,1) 41%, rgba(0,212,255,1) 100%);
+    margin: 0px auto;
+    margin-left: 0px;
+    margin-right: 0px;
+    border: 1px gray solid;
+    color: white;
+}
+.crear{
+    text-decoration: none;
+    color: white;
+    display: flex;
+    margin-left: 30px;
+    margin-top: 20px;
+}
+.divButtom{
+    display: flex;
+    margin-left: 49px;
+    margin-top: 20px;
+}
+
+.dogs{
+   
+    display: inline-block;
+    padding: 10px;
+    background: rgb(62,52,223);
+    background: linear-gradient(90deg, rgba(62,52,223,0.8580474426098564) 0%, rgba(108,108,213,1) 100%, rgba(0,212,255,1) 100%);
+    margin: 10px;
+    border-radius: 10px;
+
+}
+.text{
+    text-decoration: none;
+    color: white;
+    padding-top: 0px;
+    padding-left: 1px;
+}
+/* .filOrden{
+    display: flex;
+    margin-left: 50px;
+} */
+/* .temperamentos{
+    display: flex;
+} */
+/* .filtros{
+    align-items: flex-start;
+} */
+/* .razas{
+    display: flex;
+} */
+/* .apiOrcre{
+    display: inline-block;
+} */

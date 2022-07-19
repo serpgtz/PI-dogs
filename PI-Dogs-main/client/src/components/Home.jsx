@@ -6,6 +6,7 @@ import { getDogs, ordenDogs, apiOrbs,getTemperamentos, ordenByTemperament, orden
 import Card from "./Card";
 import Paginado from "./Paginado";
 import SearchBar from "./SearchBar";
+import s from "./Home.module.css"
 
 
 
@@ -80,14 +81,18 @@ export default function Home(){
 
 
     return(
-        <div>
-            <Link to = "/dogs">Crear Raza</Link>
+        <div className={s.home}>
+            < fragment className={s.crear}>
+            <Link className={s.crear} to = "/dogs">Crear Raza</Link>
+            </fragment>
             <h1>Dogs</h1>
+          <div className={s.divButtom}>
             <button onClick={e=>{handlerClick(e)}} >
                 Refresh dogs
             </button>
-
-            <div>
+            </div>
+        
+            <div className={s.filOrden}>
                 <label>Orden alfabetico: </label>
                 <select onChange={e=>{handlerOrden(e)}}>
                     <option value="asc">A-Z</option>
@@ -95,13 +100,15 @@ export default function Home(){
                 </select>
             </div>
             <div>
+            <div className={s.apiOrcre}>
             <label>Creados o Api: </label>
                 <select onChange={e=>{handlerSelect(e)}}>
                     <option value={valueCreate}>{`${valueCreate}`}</option>
                     <option value="api">Existentes</option>
                     <option value="cre">Creados</option>
                 </select>
-
+            </div>
+             <div className={s.temperamentos}>
                 <label>Temperamentos: </label>
                 <select onChange={e=>{handleTemp(e)}}>
                     <option value="todos">Todos</option>
@@ -115,6 +122,7 @@ export default function Home(){
                         })
                     }
                 </select>
+            <div className={s.razas}>
                 <label>Razas: </label>
                 <select onChange={e=>{handleRaza(e)}}>
                     <option value="todos">Todos</option>
@@ -126,22 +134,28 @@ export default function Home(){
                     })
 
                    }
+                   
                 </select>
+            </div>
+            </div>
                 <Paginado dogsPerPage={dogsPerPage}
                 alldogs={alldogs.length}
                 paginado={paginado}/>
 
                 <SearchBar setPageCurrent={setPageCurrent}/>
+              
                 {
                     currentDogs?.map(d=>{
                         console.log(alldogs)
                     return(
-                        <fragment>
+                        <fragment className={s.dogs}>
                       <Link to={"/dogDetail/"+ d.id}>
+                    <div className={s.text}>
                         <Card name={d.name}
                         image={d.image}
                         temperament={d.temperament}
                         weight={d.weight}/>
+                    </div> 
                       </Link>
                        </fragment>
                     );

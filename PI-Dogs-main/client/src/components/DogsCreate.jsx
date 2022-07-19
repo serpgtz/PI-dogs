@@ -2,6 +2,7 @@ import React, {useEffect, useState} from "react";
 import { Link, useHistory } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import {getTemperamentos,postDogs} from "../action/index"
+import s from "./DogsCreate.module.css"
 
 function Validate(input){
     const errors = {}
@@ -32,6 +33,7 @@ export default function DogsCreate(){
     const dispatch = useDispatch()
     const temperamentos = useSelector(state=>state.temperamentos)
     const [errors, setErrors] = useState({});
+    const history = useHistory()
 
     const [input, setInput] = useState({
         name:"",
@@ -90,33 +92,43 @@ export default function DogsCreate(){
         image:"",
         temperamento:[]
         })
+        history.push("/home")
+        
+        
     }
 
+    
 
 
     return(
-        <div>
+        <div className={s.createDog}>
             <Link to={"/home"}>
                 <button>Home</button>
             </Link>
             <h1>Crear Dogs</h1>
             <form onSubmit={(e)=>handleSubmit(e)}>
-                <div>
-                    <label>Nombre:</label>
-                    <input type="text"
+                <div className={s.container}>
+                <div className={s.nombre}>
+                    <label>Nombre: </label>
+                    <input className={s.input} type="text"
                      value={input.name}
                      name="name"
+                    
                      onChange={handleChange}/>
+                 </div>
+              
                  {
                         errors.name && (
                             <p className= "error">{errors.name} </p>
                         )
                     }
+               
                     
                 </div>
                 <div>
-                    <label>Altura:</label>
-                    <input type="number"
+                  <div className={s.altura}>
+                    <label >Altura:</label>
+                    <input className={s.input1} type="number"
                     value={input.height}
                     name="height"
                     onChange={handleChange}/>
@@ -126,11 +138,13 @@ export default function DogsCreate(){
                             <p className= "error">{errors.height} </p>
                         )
                     }
+                 </div>
                     
                 </div>
                 <div>
+                 <div className={s.peso}>
                     <label>Peso:</label>
-                    <input type="number"
+                    <input className={s.input2} type="number"
                     value={input.weight}
                     name="weight"
                     onChange={handleChange}/>
@@ -140,11 +154,12 @@ export default function DogsCreate(){
                             <p className= "error">{errors.weight} </p>
                         )
                     }
-                    
+                </div>
                 </div>
                 <div>
+                  <div className={s.esperanza}>
                     <label>Esperanza de Vida:</label>
-                    <input type="number"
+                    <input className={s.input3} type="number"
                     value={input.life_span}
                     name="life_span"
                     onChange={handleChange}/>
@@ -154,11 +169,13 @@ export default function DogsCreate(){
                             <p className= "error">{errors.life_span} </p>
                         )
                     }
+                 </div> 
                     
                 </div>
                 <div>
+                 <div className={s.imagen}>
                     <label>Imagen</label>
-                    <input type="text"
+                    <input className={s.input4} type="text"
                     value={input.image}
                     name="image"
                     onChange={handleChange}/>
@@ -168,20 +185,32 @@ export default function DogsCreate(){
                             <p className= "error">{errors.image} </p>
                         )
                     }
+                 </div>
                     
                 </div>
+                 <div className={s.temperamentos}>
                 <label>Temperamentos:</label>
-                <select onChange={(e)=>handleSelect(e)}>
+               
+                <select className={s.tem} onChange={(e)=>handleSelect(e)}>
                     
-                    <option>Todos</option>
+                    <option >Todos</option>
                     {
                         temperamentos.map(t=><option value={t.name}>{t.name}</option>)
                     }
+                   
+                
+                
                 </select>
+                </div>
+                
+              
+               
 
                 <ul ><li>{input.temperamento.map(c=> c +  " ,")}</li></ul>
-
+              
+            <div className={s.buttonC}>
                 <button type="submit">Crear Perro</button>
+            </div>
 
             </form>
         </div>

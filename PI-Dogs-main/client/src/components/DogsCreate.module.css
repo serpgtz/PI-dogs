@@ -1,0 +1,73 @@
+.createDog{
+    background: rgb(2,0,36);
+    background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(9,9,121,1) 41%, rgba(0,212,255,1) 100%);
+    
+    padding-bottom: 100%;
+    color: white;
+    
+   
+}
+.s.buttonC{
+    margin-bottom: 0px;
+}
+.nombre{
+    display: flex;
+   
+  
+    margin-left: 200px;
+    margin-bottom: 20px;
+  
+    
+}
+.altura{
+    display: flex;
+    margin-left: 200px;
+    margin-bottom: 20px;
+    
+}
+
+.peso{
+    display: flex;
+    margin-left: 200px; 
+    margin-bottom: 20px;
+}
+
+.esperanza{
+    display: flex;
+    margin-left: 200px; 
+    margin-bottom: 20px;
+}
+
+.imagen{
+    display: flex;
+    margin-left: 200px; 
+    margin-bottom: 20px;
+}
+
+.temperamentos{
+    display: flex;
+    margin-left: 206px; 
+    margin-bottom: 20px;
+}
+
+.input{
+    margin-left: 72px;
+}
+
+
+.input1{
+    margin-left: 88px;
+}
+.input2{
+    margin-left: 94px;
+}
+.input4{
+    margin-left: 80px;
+}
+.tem{
+    margin-left: 10px;
+}
+.buttonC{
+    margin: 0%;
+    padding: 0px;
+}
