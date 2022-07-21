@@ -1,5 +1,5 @@
 
-import {GET_DOGS, ORDEN_DOGS, APY_OR_BD, GET_BY_NAME,POST_DOGS, GET_TEMPERAMENTOS, GET_DETAIL,  ORDEN_BY_TEM,ORDEN_BY_RAZA} from "../action/index"
+import {GET_DOGS, ORDEN_DOGS,ORDEN_PESO, APY_OR_BD, GET_BY_NAME,POST_DOGS, GET_TEMPERAMENTOS, GET_DETAIL,  ORDEN_BY_TEM,ORDEN_BY_RAZA} from "../action/index"
 
 const initialState = {
     dogs:[],
@@ -100,6 +100,68 @@ export default function reducer(state = initialState, action){
                         dogs:dogsOrden
                     }
                 }
+            case ORDEN_PESO:
+
+                if(action.payload==="asc"){
+                    let dogsOrden= state.dogs.sort((c1,c2)=>{
+                          if(parseInt(c1.weight.split(" ")[0])>parseInt(c2.weight.split(" ")[0])){
+                                return 1
+                            }
+                           else if(parseInt(c1.weight.split(" ")[0])<parseInt(c2.weight.split(" ")[0])){
+                                return -1
+                            }
+                            else{
+                                return 0;
+                            }
+                        })
+                        
+                        
+                        return {
+                            ...state,
+                            dogs:dogsOrden
+                        }
+                    }
+                    
+                    if(action.payload==="des"){
+                        let dogsOrden= state.dogs.sort((c1,c2)=>{
+                            if(parseInt(c1.weight.split(" ")[0])>parseInt(c2.weight.split(" ")[0])){
+                                return -1
+                            }
+                            else if(parseInt(c1.weight.split(" "))[0]<parseInt(c2.weight.split(" ")[0])){
+                                return 1
+                            }
+                            else{
+                                return 0;
+                            }
+                        })
+                        
+                        
+                        return {
+                            ...state,
+                            dogs:dogsOrden
+                        }
+                    }
+              
+                   
+                    
+                
+                    
+                  
+                    
+                        
+                
+                    
+                    
+                   
+
+
+
+                
+                    
+                  
+                
+                   
+                // console.log(dogsNumber)
             case APY_OR_BD:
                 const allDogs= state.allDogs;
                 const createFilter= action.payload === "cre"?allDogs.filter(d=>d.id.length>6): allDogs.filter(d=>d.id<300)

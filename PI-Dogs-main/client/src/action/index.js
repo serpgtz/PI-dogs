@@ -10,6 +10,7 @@ export const POST_DOGS = "POST_DOGS"
 export const GET_DETAIL = "GET_DETAIL"
 export const ORDEN_BY_TEM = "ORDEN_BY_TEM"
 export const ORDEN_BY_RAZA = "ORDEN_BY_RAZA"
+export const ORDEN_PESO = "ORDEN_PESO"
 
 
 
@@ -82,6 +83,15 @@ export function ordenDogs(payload){
     }
     
 
+}
+
+export function OrdenPeso(value){
+    return function(dispatch){
+        dispatch({
+            type:ORDEN_PESO,
+            payload:value
+        })
+    }
 }
 export function ordenByTemperament(temp){
     console.log(temp)

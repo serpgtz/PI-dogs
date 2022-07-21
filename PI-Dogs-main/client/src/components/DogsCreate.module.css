@@ -3,10 +3,16 @@
     background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(9,9,121,1) 41%, rgba(0,212,255,1) 100%);
     
     padding-bottom: 100%;
-    color: white;
+    color: rgb(61, 17, 218);
+    background-image: url("https://preview.free3d.com/img/2015/06/2140167343639102664/tphtw5kn-900.jpg");
+    background-size: cover;
+    height: 100%;
     
    
 }
+
+
+
 .s.buttonC{
     margin-bottom: 0px;
 }

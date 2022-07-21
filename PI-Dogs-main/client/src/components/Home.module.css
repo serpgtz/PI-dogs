@@ -39,6 +39,23 @@
     padding-top: 0px;
     padding-left: 1px;
 }
+
+.logo{
+    background-image: url("../logo/cooltext415660571579437.png");
+    
+    padding-top: 20px;
+    margin: 0px;
+    margin-top: 0px;
+    display: flexbox;
+    padding-bottom: 77px;
+    
+}
+
+.butrefresh{
+    cursor: pointer; 
+    border: none;
+    position: relative;
+}
 /* .filOrden{
     display: flex;
     margin-left: 50px;

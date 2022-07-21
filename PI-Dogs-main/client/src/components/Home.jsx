@@ -2,11 +2,12 @@
 import { useEffect,useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
-import { getDogs, ordenDogs, apiOrbs,getTemperamentos, ordenByTemperament, ordenByRaza } from "../action";
+import { getDogs, ordenDogs, apiOrbs,getTemperamentos, ordenByTemperament, ordenByRaza, OrdenPeso } from "../action";
 import Card from "./Card";
 import Paginado from "./Paginado";
 import SearchBar from "./SearchBar";
 import s from "./Home.module.css"
+import logo from "../logo/cooltext415660571579437.png"
 
 
 
@@ -76,6 +77,13 @@ export default function Home(){
         setPageCurrent(1)
         dispatch(ordenByRaza(e.target.value))
     }
+    function handlePeso(e){
+        e.preventDefault()
+        setPageCurrent(1)
+        dispatch(OrdenPeso(e.target.value))
+        setOrden(e.target.value)
+
+    }
 
     
 
@@ -85,7 +93,10 @@ export default function Home(){
             < fragment className={s.crear}>
             <Link className={s.crear} to = "/dogs">Crear Raza</Link>
             </fragment>
-            <h1>Dogs</h1>
+            <div className={s.logo}>
+            
+            </div>
+           
           <div className={s.divButtom}>
             <button onClick={e=>{handlerClick(e)}} >
                 Refresh dogs
@@ -136,6 +147,13 @@ export default function Home(){
                    }
                    
                 </select>
+                <div className={s.peso}>
+                    <label>Peso: </label>
+                    <select onChange={e=>{handlePeso(e)}}>
+                        <option value="asc">Acendente</option>
+                        <option value="des">Decendente</option>
+                    </select>
+                </div>
             </div>
             </div>
                 <Paginado dogsPerPage={dogsPerPage}
