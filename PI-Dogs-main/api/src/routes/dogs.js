@@ -16,7 +16,7 @@ const getApiInfo= async ()=>{
             name:el.name,
             id:el.id,
             height:el.height.metric,
-            weight:el.weight.metric,
+            weight:el.weight.metric.includes("NaN")?el.weight.metric="0 - 0":el.weight.metric,
             life_span:el.life_span,
             image:el.image.url,
             temperament: el.temperament

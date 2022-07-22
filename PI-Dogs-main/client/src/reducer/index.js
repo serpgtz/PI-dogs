@@ -102,10 +102,13 @@ export default function reducer(state = initialState, action){
                 }
             case ORDEN_PESOASC:
               const allDogs2= state.allDogs
-              const aux2=0;
+              //const aux2=0;
 
-              const dogsAS = action.payload==="asc"?allDogs2.sort((a,b)=>(a.weight[0]!=="NaN"?parseInt(a.weight.split("-")[0]):null)-(b.weight[0]!=="NaN"?parseInt(b.weight.split("-")[0]):null)):
-              allDogs2.sort((a,b)=>(b.weight[0]!=="NaN"?parseInt(b.weight.split("-")[0]):null)-(a.weight[0]!=="NaN"?parseInt(a.weight.split("-")[0]):null))
+
+              const dogsOrP = action.payload === "asc"?allDogs2.sort((a,b)=>parseInt(a.weight.split("-")[0]) - parseInt(b.weight.split("-")[0])):allDogs2.sort((a,b)=>parseInt(b.weight.split("-")[0]) - parseInt(a.weight.split("-")[0]))
+
+            //   const dogsAS = action.payload==="asc"?allDogs2.sort((a,b)=>(a.weight[0]!=="NaN"?parseInt(a.weight.split("-")[0]):null)-(b.weight[0]!=="NaN"?parseInt(b.weight.split("-")[0]):null)):
+            //   allDogs2.sort((a,b)=>(b.weight[0]!=="NaN"?parseInt(b.weight.split("-")[0]):null)-(a.weight[0]!=="NaN"?parseInt(a.weight.split("-")[0]):null))
 
             //   const dogsAS = action.payload==="asc"?allDogs2.sort((a,b)=>(a.weight[0]!=="NaN"?parseInt(a.weight.split("-")[0]):a.weight=aux2)-(b.weight[0]!=="NaN"?parseInt(b.weight.split("-")[0]):b.weight=aux2)):
             //   allDogs2.sort((a,b)=>(b.weight[0]!=="NaN"?parseInt(b.weight.split("-")[0]):b.weight=aux2)-(a.weight[0]!=="NaN"?parseInt(a.weight.split("-")[0]):a.weight=aux2))
@@ -114,7 +117,7 @@ export default function reducer(state = initialState, action){
                
                 return {
                     ...state,
-                    dogs:dogsAS
+                    dogs:dogsOrP
                 }
 
             
