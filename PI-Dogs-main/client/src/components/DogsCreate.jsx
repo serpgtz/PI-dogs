@@ -12,11 +12,24 @@ function Validate(input){
     else if(!input.height){
         errors.height = "Falta Capturar Altura"
     }
+    else if(!/[0-9]+\s+\-\s+[0-9]/g.test(input.height)){
+        errors.height = "el formato de ser num - num"
+        
+    }
+    
     else if(!input.weight){
         errors.weight = "Falta Captuar Peso"
     }
+    else if(!/[0-9]+\s+\-\s+[0-9]/g.test(input.weight)){
+        errors.weight = "el formato de ser num - num"
+        
+    }
     else if(!input.life_span){
         errors.life_span="Falta Capturar Esperanza de Vida"
+    }
+    else if(!/[0-9]+\s+\-\s+[0-9]/g.test(input.life_span)){
+        errors.life_span = "el formato de ser num - num"
+        
     }
     else if(!input.image){
         errors.image = "Falta Captuar image"
@@ -82,6 +95,24 @@ export default function DogsCreate(){
             alert("No debe de Haber un campo en Blanco")
             return false
         }
+        else if(!/[0-9]+\s+\-\s+[0-9]/g.test(input.weight)){
+           alert("No es el formato correcto del peso")
+           return false;
+            
+        }
+        else if(!/[0-9]+\s+\-\s+[0-9]/g.test(input.height)){
+            alert("No es el formato correcto de la altura")
+            return false;
+             
+         }
+         else if(!/[0-9]+\s+\-\s+[0-9]/g.test(input.life_span)){
+            alert("No es el formato correcto de la esperanza de vida")
+            return false;
+             
+         }
+         
+        
+
         dispatch(postDogs(input))
         alert("Perro Creado con Exito")
         setInput({
@@ -128,7 +159,7 @@ export default function DogsCreate(){
                 <div>
                   <div className={s.altura}>
                     <label >Altura:</label>
-                    <input className={s.input1} type="number"
+                    <input className={s.input1} type="text"
                     value={input.height}
                     name="height"
                     onChange={handleChange}/>
@@ -144,7 +175,7 @@ export default function DogsCreate(){
                 <div>
                  <div className={s.peso}>
                     <label>Peso:</label>
-                    <input className={s.input2} type="number"
+                    <input className={s.input2} type="text"
                     value={input.weight}
                     name="weight"
                     onChange={handleChange}/>
@@ -159,7 +190,7 @@ export default function DogsCreate(){
                 <div>
                   <div className={s.esperanza}>
                     <label>Esperanza de Vida:</label>
-                    <input className={s.input3} type="number"
+                    <input className={s.input3} type="text"
                     value={input.life_span}
                     name="life_span"
                     onChange={handleChange}/>

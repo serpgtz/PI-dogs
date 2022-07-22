@@ -1,5 +1,5 @@
 
-import {GET_DOGS, ORDEN_DOGS,ORDEN_PESO, APY_OR_BD, GET_BY_NAME,POST_DOGS, GET_TEMPERAMENTOS, GET_DETAIL,  ORDEN_BY_TEM,ORDEN_BY_RAZA} from "../action/index"
+import {GET_DOGS, ORDEN_DOGS,ORDEN_PESOASC, APY_OR_BD, GET_BY_NAME,POST_DOGS, GET_TEMPERAMENTOS, GET_DETAIL,  ORDEN_BY_TEM,ORDEN_BY_RAZA} from "../action/index"
 
 const initialState = {
     dogs:[],
@@ -100,47 +100,64 @@ export default function reducer(state = initialState, action){
                         dogs:dogsOrden
                     }
                 }
-            case ORDEN_PESO:
+            case ORDEN_PESOASC:
+              const allDogs2= state.allDogs
+              const aux2=0;
 
-                if(action.payload==="asc"){
-                    let dogsOrden= state.dogs.sort((c1,c2)=>{
-                          if(parseInt(c1.weight.split(" ")[0])>parseInt(c2.weight.split(" ")[0])){
-                                return 1
-                            }
-                           else if(parseInt(c1.weight.split(" ")[0])<parseInt(c2.weight.split(" ")[0])){
-                                return -1
-                            }
-                            else{
-                                return 0;
-                            }
-                        })
+              const dogsAS = action.payload==="asc"?allDogs2.sort((a,b)=>(a.weight[0]!=="NaN"?parseInt(a.weight.split("-")[0]):null)-(b.weight[0]!=="NaN"?parseInt(b.weight.split("-")[0]):null)):
+              allDogs2.sort((a,b)=>(b.weight[0]!=="NaN"?parseInt(b.weight.split("-")[0]):null)-(a.weight[0]!=="NaN"?parseInt(a.weight.split("-")[0]):null))
+
+            //   const dogsAS = action.payload==="asc"?allDogs2.sort((a,b)=>(a.weight[0]!=="NaN"?parseInt(a.weight.split("-")[0]):a.weight=aux2)-(b.weight[0]!=="NaN"?parseInt(b.weight.split("-")[0]):b.weight=aux2)):
+            //   allDogs2.sort((a,b)=>(b.weight[0]!=="NaN"?parseInt(b.weight.split("-")[0]):b.weight=aux2)-(a.weight[0]!=="NaN"?parseInt(a.weight.split("-")[0]):a.weight=aux2))
+             
+           
+               
+                return {
+                    ...state,
+                    dogs:dogsAS
+                }
+
+            
+            
+                // if(action.payload==="asc"){
+                //     let dogsOrden= state.dogs.sort((c1,c2)=>{
+                //           if(parseInt(c1.weight.split("-")[0])>parseInt(c2.weight.split("-")[0])){
+                //                 return 1
+                //             }
+                //            else if(parseInt(c1.weight.split("-")[0])<parseInt(c2.weight.split("-")[0])){
+                //                 return -1
+                //             }
+                //             else{
+                //                 return 0;
+                //             }
+                //         })
                         
                         
-                        return {
-                            ...state,
-                            dogs:dogsOrden
-                        }
-                    }
+                //         return {
+                //             ...state,
+                //             dogs:dogsOrden
+                //         }
+                //     }
                     
-                    if(action.payload==="des"){
-                        let dogsOrden= state.dogs.sort((c1,c2)=>{
-                            if(parseInt(c1.weight.split(" ")[0])>parseInt(c2.weight.split(" ")[0])){
-                                return -1
-                            }
-                            else if(parseInt(c1.weight.split(" "))[0]<parseInt(c2.weight.split(" ")[0])){
-                                return 1
-                            }
-                            else{
-                                return 0;
-                            }
-                        })
+                //     if(action.payload==="des"){
+                //         let dogsOrden= state.dogs.sort((c1,c2)=>{
+                //             if(parseInt(c1.weight.split("-")[0])>parseInt(c2.weight.split("-")[0])){
+                //                 return -1
+                //             }
+                //             else if(parseInt(c1.weight.split("-"))[0]<parseInt(c2.weight.split("-")[0])){
+                //                 return 1
+                //             }
+                //             else{
+                //                 return 0;
+                //             }
+                //         })
                         
                         
-                        return {
-                            ...state,
-                            dogs:dogsOrden
-                        }
-                    }
+                //         return {
+                //             ...state,
+                //             dogs:dogsOrden
+                //         }
+                //     }
               
                    
                     

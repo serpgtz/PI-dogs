@@ -48,6 +48,7 @@ export default function Home(){
     dispatch(getDogs());
     setPageCurrent(1)
     setValueCreate("all")
+    
 
 
 
@@ -55,6 +56,7 @@ export default function Home(){
     function handlerOrden(e){
         e.preventDefault()
         dispatch(ordenDogs(e.target.value))
+        setPageCurrent(1)
         setOrden(e.target.value)
     }
     function handlerSelect(e){
@@ -102,6 +104,7 @@ export default function Home(){
                 Refresh dogs
             </button>
             </div>
+      
         
             <div className={s.filOrden}>
                 <label>Orden alfabetico: </label>
