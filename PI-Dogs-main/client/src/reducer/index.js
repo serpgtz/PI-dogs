@@ -1,5 +1,5 @@
 
-import {GET_DOGS, ORDEN_DOGS,ORDEN_PESOASC, APY_OR_BD, GET_BY_NAME,POST_DOGS, GET_TEMPERAMENTOS, GET_DETAIL,  ORDEN_BY_TEM,ORDEN_BY_RAZA} from "../action/index"
+import {GET_DOGS, ORDEN_DOGS,RESET_DOG, ORDEN_PESOASC, APY_OR_BD, GET_BY_NAME,POST_DOGS, GET_TEMPERAMENTOS, GET_DETAIL,  ORDEN_BY_TEM,ORDEN_BY_RAZA} from "../action/index"
 
 const initialState = {
     dogs:[],
@@ -47,6 +47,11 @@ export default function reducer(state = initialState, action){
         case POST_DOGS:
             return{
                 ...state
+            }
+        case RESET_DOG:
+            return {
+                ...state,
+                dog:{}
             }
         case GET_TEMPERAMENTOS:
             return{
@@ -101,18 +106,13 @@ export default function reducer(state = initialState, action){
                     }
                 }
             case ORDEN_PESOASC:
-              const allDogs2= state.allDogs
+              const allDogs2= state.dogs
               //const aux2=0;
 
 
               const dogsOrP = action.payload === "asc"?allDogs2.sort((a,b)=>parseInt(a.weight.split("-")[0]) - parseInt(b.weight.split("-")[0])):allDogs2.sort((a,b)=>parseInt(b.weight.split("-")[0]) - parseInt(a.weight.split("-")[0]))
 
-            //   const dogsAS = action.payload==="asc"?allDogs2.sort((a,b)=>(a.weight[0]!=="NaN"?parseInt(a.weight.split("-")[0]):null)-(b.weight[0]!=="NaN"?parseInt(b.weight.split("-")[0]):null)):
-            //   allDogs2.sort((a,b)=>(b.weight[0]!=="NaN"?parseInt(b.weight.split("-")[0]):null)-(a.weight[0]!=="NaN"?parseInt(a.weight.split("-")[0]):null))
-
-            //   const dogsAS = action.payload==="asc"?allDogs2.sort((a,b)=>(a.weight[0]!=="NaN"?parseInt(a.weight.split("-")[0]):a.weight=aux2)-(b.weight[0]!=="NaN"?parseInt(b.weight.split("-")[0]):b.weight=aux2)):
-            //   allDogs2.sort((a,b)=>(b.weight[0]!=="NaN"?parseInt(b.weight.split("-")[0]):b.weight=aux2)-(a.weight[0]!=="NaN"?parseInt(a.weight.split("-")[0]):a.weight=aux2))
-             
+            
            
                
                 return {

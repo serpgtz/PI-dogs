@@ -1,5 +1,5 @@
 import React, {useEffect} from "react";
-import {getDogById} from "../action"
+import {getDogById, resetState} from "../action"
 import { useDispatch, useSelector } from "react-redux";
 import { Link  } from "react-router-dom";
 import s from "./Detail.module.css"
@@ -16,6 +16,7 @@ export default function Detail(props){
 
 useEffect(()=>{
     dispatch(getDogById(props.match.params.id))
+    return()=>dispatch(resetState())
 },[dispatch])
 
 const dog= useSelector(state=>state.dog)

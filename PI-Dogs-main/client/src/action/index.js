@@ -11,6 +11,7 @@ export const GET_DETAIL = "GET_DETAIL"
 export const ORDEN_BY_TEM = "ORDEN_BY_TEM"
 export const ORDEN_BY_RAZA = "ORDEN_BY_RAZA"
 export const ORDEN_PESOASC = "ORDEN_PESO"
+export const RESET_DOG = "RESET_DOG"
 
 
 
@@ -83,6 +84,13 @@ export function ordenDogs(payload){
     }
     
 
+}
+export function resetState(){
+    return function(dispatch){
+        dispatch({
+            type:RESET_DOG
+        })
+    }
 }
 
 export function OrdenPeso(value){
